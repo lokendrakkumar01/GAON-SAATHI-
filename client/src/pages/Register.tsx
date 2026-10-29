@@ -1,7 +1,6 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { motion } from 'framer-motion';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -36,9 +35,7 @@ const Register = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-12">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div
         className="max-w-md w-full bg-white rounded-xl shadow-lg p-8"
       >
         <h2 className="text-3xl font-bold text-primary-800 text-center mb-6">पंजीकरण करें</h2>
@@ -105,7 +102,7 @@ const Register = () => {
         <p className="text-center mt-4 text-gray-600">
           पहले से खाता है? <Link to="/login" className="text-primary-600 font-medium">लॉगिन करें</Link>
         </p>
-      </motion.div>
+      </div>
     </div>
   );
 };

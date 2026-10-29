@@ -1,7 +1,6 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { motion } from 'framer-motion';
 
 const Login = () => {
   const [phone, setPhone] = useState('');
@@ -27,9 +26,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-12">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div
         className="max-w-md w-full bg-white rounded-xl shadow-lg p-8"
       >
         <h2 className="text-3xl font-bold text-primary-800 text-center mb-6">लॉगिन करें</h2>
@@ -62,7 +59,7 @@ const Login = () => {
         <p className="text-center mt-4 text-gray-600">
           खाता नहीं है? <Link to="/register" className="text-primary-600 font-medium">पंजीकरण करें</Link>
         </p>
-      </motion.div>
+      </div>
     </div>
   );
 };

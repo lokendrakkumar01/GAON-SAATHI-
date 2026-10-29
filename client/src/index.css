@@ -1,8 +1,8 @@
-﻿@tailwind base;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap');
+
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap');
 
 * {
   font-family: 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
@@ -25,3 +25,10 @@ body {
     @apply bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6;
   }
 }
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(0.75rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in { animation: fade-in-up 0.5s ease-out both; }

@@ -1,4 +1,5 @@
-﻿import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react'
+import type { ReactNode } from 'react';
 import api from '../services/api';
 
 interface User {
@@ -33,7 +34,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         try {
           const res = await api.get('/auth/me');
           setUser(res.data.user);
-        } catch (error) {
+        } catch {
           localStorage.removeItem('token');
           setToken(null);
         }

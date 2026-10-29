@@ -1,5 +1,5 @@
 ﻿import { Link } from 'react-router-dom';
-import { Menu, X, Globe, Home } from 'lucide-react';
+import { Menu, X, Home } from './Icons';
 import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 

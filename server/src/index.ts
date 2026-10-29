@@ -6,10 +6,12 @@ import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import rateLimit from 'express-rate-limit';
 import { connectDB } from './config/db.js';
+import { configureCloudinary } from './config/cloudinary.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import authRoutes from './routes/auth.js';
 
 dotenv.config();
+configureCloudinary();
 connectDB();
 
 const app = express();

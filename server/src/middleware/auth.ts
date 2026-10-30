@@ -26,6 +26,9 @@ export const protect = async (req: AuthRequest, res: Response, next: NextFunctio
     if (!req.user) {
       return res.status(401).json({ success: false, message: 'उपयोगकर्ता नहीं मिला' });
     }
+    if (!req.user.isActive) {
+      return res.status(401).json({ success: false, message: 'खाता निष्क्रिय है' });
+    }
 
     next();
   } catch (error) {

@@ -9,12 +9,16 @@ import VoiceAssistant from './pages/VoiceAssistant';
 import Education from './pages/Education';
 import Jobs from './pages/Jobs';
 import Dashboard from './pages/Dashboard';
+import AdminLogin from './pages/AdminLogin';
+import AdminDashboard from './pages/AdminDashboard';
 
 function App() {
   return (
     <div className="min-h-screen bg-cream">
-      <Navbar />
+      {!window.location.pathname.startsWith('/admin') && <Navbar />}
       <Routes>
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

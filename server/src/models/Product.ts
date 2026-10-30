@@ -31,7 +31,7 @@ const productSchema = new Schema<IProduct>({
   village: { type: String, required: true },
   district: { type: String, required: true },
   availability: { type: String, enum: ['available', 'sold', 'unavailable'], default: 'available' },
-  isApproved: { type: Boolean, default: true }
+  isApproved: { type: Boolean, default: false }
 }, { timestamps: true });
 
 export const Product = mongoose.model<IProduct>('Product', productSchema);

@@ -11,6 +11,7 @@ export const register = async (req: Request, res: Response, next: any) => {
     if (!name || !phone || !password || !district) {
       return next(new AppError('सभी आवश्यक फील्ड भरें', 400));
     }
+    if (String(password).length < 8) return next(new AppError('पासवर्ड कम से कम 8 अक्षरों का होना चाहिए', 400));
 
     const userExists = await User.findOne({ phone });
     if (userExists) {

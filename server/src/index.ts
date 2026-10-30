@@ -9,6 +9,7 @@ import { connectDB } from './config/db.js';
 import { configureCloudinary } from './config/cloudinary.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import authRoutes from './routes/auth.js';
+import adminRoutes from './routes/admin.js';
 
 dotenv.config();
 configureCloudinary();
@@ -39,6 +40,7 @@ app.get('/api/health', (req, res) => {
 });
 
 app.use('/api/auth', authRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.use(errorHandler);
 

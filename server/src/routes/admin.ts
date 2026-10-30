@@ -7,6 +7,8 @@ import { AuditLog } from '../models/AuditLog.js';
 import { User } from '../models/User.js';
 import { Product } from '../models/Product.js';
 import { Complaint } from '../models/Complaint.js';
+import type { IComplaint } from '../models/Complaint.js';
+import type { FilterQuery } from 'mongoose';
 import { Job } from '../models/Job.js';
 import { protectAdmin, requireAdminPermission, requireSuperAdmin, type AdminRequest } from '../middleware/adminAuth.js';
 
@@ -82,7 +84,10 @@ router.post('/administrators', requireSuperAdmin, async (req: AdminRequest, res,
 
 router.get('/complaints', requireAdminPermission('complaints.read'), async (req, res, next) => {
   try {
-    const filter = req.query.status ? { status: String(req.query.status) } : {};
+    const filter: FilterQuery<IComplaint> = {};
+    if (req.query.status && ['pending', 'in-progress', 'resolved'].includes(String(req.query.status))) {
+      filter.status = String(req.query.status) as IComplaint['status'];
+    }
     const complaints = await Complaint.find(filter).populate('reportedBy', 'name phone').sort({ createdAt: -1 }).limit(100).lean();
     res.json({ success: true, complaints });
   } catch (error) { next(error); }

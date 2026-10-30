@@ -1,4 +1,4 @@
-﻿import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -13,9 +13,11 @@ import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 
 function App() {
+  const location = useLocation();
+  const isAdminPath = location.pathname.toLowerCase().startsWith('/admin');
   return (
     <div className="min-h-screen bg-cream">
-      {!window.location.pathname.startsWith('/admin') && <Navbar />}
+      {!isAdminPath && <Navbar />}
       <Routes>
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
